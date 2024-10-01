@@ -12,6 +12,16 @@ Topologi 2
 
 ### inisialisasi
 Prefix ip `192.240`
+#### Script bashrc
+Nusantara
+```
+iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE -s 192.240.0.0/16
+echo nameserver 192.168.122.1 > /etc/resolv.conf
+```
+
+```
+echo nameserver 192.168.122.1 > /etc/resolv.conf
+```
 
 Sebuah kerajaan besar di Indonesia sedang mengalami pertempuran dengan penjajah. Kerajaan tersebut adalah Sriwijaya. Karena merasa terdesak Sriwijaya meminta bantuan pada Majapahit untuk mempertahankan wilayahnya. Pertempuran besar tersebut berada di Nusantara
 
