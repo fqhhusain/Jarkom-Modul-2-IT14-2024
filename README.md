@@ -21,6 +21,7 @@ echo nameserver 192.168.122.1 > /etc/resolv.conf
 
 ```
 echo nameserver 192.168.122.1 > /etc/resolv.conf
+apt-get update
 ```
 
 Sebuah kerajaan besar di Indonesia sedang mengalami pertempuran dengan penjajah. Kerajaan tersebut adalah Sriwijaya. Karena merasa terdesak Sriwijaya meminta bantuan pada Majapahit untuk mempertahankan wilayahnya. Pertempuran besar tersebut berada di Nusantara
