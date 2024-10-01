@@ -101,6 +101,7 @@ Install bind9
 ```
 apt-get install bind9 -y
 ```
+script.sh
 ```
 echo 'zone "sudarsana.it14.com" {
     type master;
