@@ -8,4 +8,5 @@
 
 ### Topologi
 
-https://github.com/fqhhusain/Jarkom-Modul-2-IT14-2024/blob/main/Topologi.png
+![image](https://raw.githubusercontent.com/fqhhusain/Jarkom-Modul-2-IT14-2024/refs/heads/main/Topologi.png)
+
