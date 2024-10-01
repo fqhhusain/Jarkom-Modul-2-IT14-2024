@@ -12,3 +12,62 @@ Topologi 2
 
 ### inisialisasi
 Prefix ip `192.240`
+
+Sebuah kerajaan besar di Indonesia sedang mengalami pertempuran dengan penjajah. Kerajaan tersebut adalah Sriwijaya. Karena merasa terdesak Sriwijaya meminta bantuan pada Majapahit untuk mempertahankan wilayahnya. Pertempuran besar tersebut berada di Nusantara
+
+1. Untuk mempersiapkan peperangan World War MMXXIV (Iya sebanyak itu), Sriwijaya membuat dua kotanya menjadi web server yaitu Tanjungkulai, dan Bedahulu, serta Sriwijaya sendiri akan menjadi DNS Master. Kemudian karena merasa terdesak, Majapahit memberikan bantuan dan menjadikan kerajaannya (Majapahit) menjadi DNS Slave.
+
+- Nusantara (router)
+```
+auto eth0
+iface eth0 inet dhcp
+
+auto eth1
+iface eth1 inet static
+	address 192.240.1.1
+	netmask 255.255.255.0
+
+auto eth2
+iface eth2 inet static
+	address 192.240.2.1
+	netmask 255.255.255.0
+	
+auto eth3
+iface eth3 inet static
+	address 192.240.3.1
+	netmask 255.255.255.0
+```
+- Tanjungkulai(web server)
+```
+auto eth0
+iface eth0 inet static
+	address 192.240.2.4
+	netmask 255.255.255.0
+	gateway 192.240.2.1
+```
+- Bedahulu (web server)
+```
+auto eth0
+iface eth0 inet static
+	address 192.240.2.2
+	netmask 255.255.255.0
+	gateway 192.240.2.1
+```
+- sriwijaya (DNS Master)
+```
+auto eth0
+iface eth0 inet static
+	address 192.240.3.2
+	netmask 255.255.255.0
+	gateway 192.240.3.1
+```
+- Majapahit (DNS Slave)
+```
+auto eth0
+iface eth0 inet static
+	address 192.240.1.2
+	netmask 255.255.255.0
+	gateway 192.240.1.1
+```
+
+
