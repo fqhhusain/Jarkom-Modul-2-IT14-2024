@@ -18,19 +18,19 @@ Prefix ip `192.240`
 Nusantara
 ```
 iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE -s 192.240.0.0/16
-echo nameserver 192.168.122.1 > /etc/resolv.conf
+echo nameserver 192.240.3.2 > /etc/resolv.conf
 ```
 
 Sriwijaya, Majapahit (DNS)
 ```
-echo nameserver 192.168.122.1 > /etc/resolv.conf
+echo nameserver 192.240.3.2 > /etc/resolv.conf
 apt-get update
 apt-get install bind9 -y
 ```
 
 Other
 ```
-echo nameserver 192.168.122.1 > /etc/resolv.conf
+echo nameserver 192.240.3.2 > /etc/resolv.conf
 ```
 ---
 Sebuah kerajaan besar di Indonesia sedang mengalami pertempuran dengan penjajah. Kerajaan tersebut adalah Sriwijaya. Karena merasa terdesak Sriwijaya meminta bantuan pada Majapahit untuk mempertahankan wilayahnya. Pertempuran besar tersebut berada di Nusantara
@@ -166,7 +166,7 @@ $TTL    604800
                         604800 )       ; Negative Cache TTL
 ;
 @       IN      NS      sudarsana.it14.com.
-@       IN      A       192.240.3.2     ;
+@       IN      A       192.240.1.4    ;
 @       IN      AAAA    ::1' > /etc/bind/jarkom/sudarsana.it14.com
 
 service bind9 restart
