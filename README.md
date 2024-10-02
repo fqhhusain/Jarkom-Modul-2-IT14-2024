@@ -7,8 +7,9 @@
 | Chelsea Vania Hariyono | 5027231003 | 
 
 ### Topologi
-Topologi 2
-![image](https://raw.githubusercontent.com/fqhhusain/Jarkom-Modul-2-IT14-2024/refs/heads/main/Topologi.png)
+Topologi no.2
+![image](https://github.com/user-attachments/assets/edac3703-7563-453d-a60f-9904bc8ef841)
+
 
 ### inisialisasi
 Prefix ip `192.240`
@@ -50,7 +51,7 @@ iface eth3 inet static
 	address 192.240.3.1
 	netmask 255.255.255.0
 ```
-- Tanjungkulai(web server)
+- Tanjungkulai (web server)
 ```
 auto eth0
 iface eth0 inet static
@@ -66,7 +67,7 @@ iface eth0 inet static
 	netmask 255.255.255.0
 	gateway 192.240.2.1
 ```
-- sriwijaya (DNS Master)
+- Sriwijaya (DNS Master)
 ```
 auto eth0
 iface eth0 inet static
