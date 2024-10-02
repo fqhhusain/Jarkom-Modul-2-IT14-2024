@@ -29,9 +29,11 @@ apt-get install bind9 -y
 chmod +x ./script-no-2.sh
 chmod +x ./script-no-3.sh
 chmod +x ./script-no-4.sh
+chmod +x ./script-no-6.sh
 ./script-no-2.sh
 ./script-no-3.sh
 ./script-no-4.sh
+./script-no-6.sh
 ```
 Majapahit (DNS Slave)
 ```
@@ -277,6 +279,50 @@ AlbertEinstein <br />
 ![image](https://github.com/user-attachments/assets/e836bb5a-fc9f-4e54-bccf-19dcc66e3152) <br />
 
 6. Beberapa daerah memiliki keterbatasan yang menyebabkan hanya dapat mengakses domain secara langsung melalui alamat IP domain tersebut. Karena daerah tersebut tidak diketahui secara spesifik, pastikan semua komputer (client) dapat mengakses domain pasopati.xxxx.com melalui alamat IP Kotalingga (Notes: menggunakan pointer record).
+
+192.240.2.3
+
+in DNS Master
+```
+echo 'zone "2.240.192.in-addr.arpa" {
+    type master;
+    file "/etc/bind/jarkom/2.240.192.in-addr.arpa";
+};' >> /etc/bind/named.conf.local
+
+cp /etc/bind/db.local /etc/bind/jarkom/2.240.192.in-addr.arpa
+
+echo '
+;
+; BIND data file for local loopback interface
+;
+$TTL    604800
+@       IN      SOA     pasopati.it14.com. root.pasopati.it14.com. (
+                        2024100301      ; Serial
+                        604800         ; Refresh
+                        86400         ; Retry
+                        2419200         ; Expire
+                        604800 )       ; Negative Cache TTL
+;
+2.240.192.in-addr.arpa.      IN      NS      pasopati.it14.com.
+3                            IN      PTR     pasopati.it14.com.' > /etc/bind/jarkom/2.240.192.in-addr.arpa
+
+service bind9 restart
+```
+in client
+```
+host -t PTR 192.240.2.3
+```
+![image](https://github.com/user-attachments/assets/11f427d6-c668-4b07-9289-81994e63a56b)
+
+
+7. Akhir-akhir ini seringkali terjadi serangan brainrot ke DNS Server Utama, sebagai tindakan antisipasi kamu diperintahkan untuk membuat DNS Slave di Majapahit untuk semua domain yang sudah dibuat sebelumnya yang mengarah ke Sriwijaya.
+
+
+8. Kamu juga diperintahkan untuk membuat subdomain khusus melacak kekuatan tersembunyi di Ohio dengan subdomain cakra.sudarsana.xxxx.com yang mengarah ke Bedahulu.
+
+9. Karena terjadi serangan DDOS oleh shikanoko nokonoko koshitantan (NUN), sehingga sistem komunikasinya terhalang. Untuk melindungi warga, kita diperlukan untuk membuat sistem peringatan dari siren man oleh Frekuensi Freak dan memasukkannya ke subdomain panah.pasopati.xxxx.com dalam folder panah dan pastikan dapat diakses secara mudah dengan menambahkan alias www.panah.pasopati.xxxx.com dan mendelegasikan subdomain tersebut ke Majapahit dengan alamat IP menuju radar di Kotalingga.
+
+10. Markas juga meminta catatan kapan saja meme brain rot akan dijatuhkan, maka buatlah subdomain baru di subdomain panah yaitu log.panah.pasopati.xxxx.com serta aliasnya www.log.panah.pasopati.xxxx.com yang juga mengarah ke Kotalingga.
 
 
 
