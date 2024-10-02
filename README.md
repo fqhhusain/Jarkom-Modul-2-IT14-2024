@@ -65,7 +65,7 @@ iface eth0 inet static
 	netmask 255.255.255.0
 	gateway 192.240.1.1
 ```
-- HayamWuruk
+- HayamWuruk (client)
 ```
 auto eth0
 iface eth0 inet static
@@ -81,7 +81,7 @@ iface eth0 inet static
 	netmask 255.255.255.0
 	gateway 192.240.1.1
 ```
-- Srikandi
+- Srikandi (client)
 ```
 auto eth0
 iface eth0 inet static
@@ -97,7 +97,7 @@ iface eth0 inet static
 	netmask 255.255.255.0
 	gateway 192.240.3.1
 ```
-- AlbertEinstein
+- AlbertEinstein (client)
 ```
 auto eth0
 iface eth0 inet static
