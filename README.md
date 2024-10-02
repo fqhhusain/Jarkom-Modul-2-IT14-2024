@@ -19,7 +19,7 @@ iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE -s 192.240.0.0/16
 echo nameserver 192.168.122.1 > /etc/resolv.conf
 ```
 
-Majapahit, Sriwijaya, Solok
+Other
 ```
 echo nameserver 192.168.122.1 > /etc/resolv.conf
 apt-get update
@@ -89,6 +89,38 @@ iface eth0 inet static
 	address 192.240.1.4
 	netmask 255.255.255.0
 	gateway 192.240.1.1
+```
+- HayamWuruk
+```
+auto eth0
+iface eth0 inet static
+	address 192.240.1.3
+	netmask 255.255.255.0
+	gateway 192.240.1.1
+```
+- Srikandi
+```
+auto eth0
+iface eth0 inet static
+	address 192.240.1.5
+	netmask 255.255.255.0
+	gateway 192.240.1.1
+```
+- AlbertEinstein
+```
+auto eth0
+iface eth0 inet static
+	address 192.240.2.5
+	netmask 255.255.255.0
+	gateway 192.240.2.1
+```
+- Kotalingga
+```
+auto eth0
+iface eth0 inet static
+	address 192.240.2.3
+	netmask 255.255.255.0
+	gateway 192.240.2.1
 ```
 2. Karena para pasukan membutuhkan koordinasi untuk melancarkan serangannya, maka buatlah sebuah domain yang mengarah ke Solok dengan alamat sudarsana.xxxx.com dengan alias www.sudarsana.xxxx.com, dimana xxxx merupakan kode kelompok. Contoh: sudarsana.it01.com.
 
