@@ -255,6 +255,7 @@ $TTL    604800
 service bind9 restart
 ```
 5. Pastikan domain-domain tersebut dapat diakses oleh seluruh komputer (client) yang berada di Nusantara.
+
 HayamWuruk, Srikandi, AlbertEinstein <br/>
 Srikandi <br />
 ```
@@ -265,6 +266,20 @@ ping rujapala.it14.com -c 3
 ![image](https://github.com/user-attachments/assets/c62ae2c0-cea7-4827-99c6-9d1449329900) <br/>
 ![image](https://github.com/user-attachments/assets/4ba9e445-ea35-4e50-aec4-6969ceb2b1a4) <br/>
 ![image](https://github.com/user-attachments/assets/5c532ddc-36f4-40c7-b09d-b5de4877bca4) <br/>
+HayamWuruk <br />
+![image](https://github.com/user-attachments/assets/504c56fe-b5cb-4b12-88a2-22913933a131) <br/>
+![image](https://github.com/user-attachments/assets/2a104ad6-e30e-4668-8381-cb0d1f3f197f) <br/>
+![image](https://github.com/user-attachments/assets/1af1c0f1-963e-4452-ad27-064dab339044) <br />
+
+AlbertEinstein <br />
+![image](https://github.com/user-attachments/assets/4f73f0be-02a1-48cf-8dec-f067921201cd) <br/>
+![image](https://github.com/user-attachments/assets/f001861a-79fe-4a42-a091-e1b4c1c3326e) <br/>
+![image](https://github.com/user-attachments/assets/e836bb5a-fc9f-4e54-bccf-19dcc66e3152) <br />
+
+
+
+
+
 
 
 
