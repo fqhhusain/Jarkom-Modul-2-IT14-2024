@@ -11,7 +11,7 @@ Topologi no.2
 ![image](https://github.com/user-attachments/assets/edac3703-7563-453d-a60f-9904bc8ef841)
 
 
-### inisialisasi
+### Inisialisasi
 Prefix ip `192.240`
 #### Script bashrc
 Nusantara
