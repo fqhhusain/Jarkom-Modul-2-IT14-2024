@@ -255,4 +255,16 @@ $TTL    604800
 service bind9 restart
 ```
 5. Pastikan domain-domain tersebut dapat diakses oleh seluruh komputer (client) yang berada di Nusantara.
+HayamWuruk, Srikandi, AlbertEinstein <br/>
+Srikandi <br />
+```
+ping sudarsana.it14.com -c 3
+ping pasopati.it14.com -c 3
+ping rujapala.it14.com -c 3
+```
+![image](https://github.com/user-attachments/assets/c62ae2c0-cea7-4827-99c6-9d1449329900) <br/>
+![image](https://github.com/user-attachments/assets/4ba9e445-ea35-4e50-aec4-6969ceb2b1a4) <br/>
+![image](https://github.com/user-attachments/assets/5c532ddc-36f4-40c7-b09d-b5de4877bca4) <br/>
+
+
 
