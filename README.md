@@ -8,7 +8,8 @@
 
 ### Topologi
 Topologi no.2
-![image](https://github.com/user-attachments/assets/edac3703-7563-453d-a60f-9904bc8ef841)
+![image](https://github.com/user-attachments/assets/444e42a4-14a0-4526-b5ae-55f1b948a3e7)
+
 
 
 ### Inisialisasi
