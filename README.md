@@ -18,14 +18,27 @@ Prefix ip `192.240`
 Nusantara
 ```
 iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE -s 192.240.0.0/16
-echo nameserver 192.240.3.2 > /etc/resolv.conf
+echo nameserver 192.168.122.1 > /etc/resolv.conf
 ```
 
-Sriwijaya, Majapahit (DNS)
+Sriwijaya(DNS Master)
 ```
-echo nameserver 192.240.3.2 > /etc/resolv.conf
+echo -e "nameserver 192.168.122.1\nnameserver 192.240.3.2" > /etc/resolv.conf
 apt-get update
 apt-get install bind9 -y
+chmod +x ./script-no-2.sh
+chmod +x ./script-no-3.sh
+chmod +x ./script-no-4.sh
+./script-no-2.sh
+./script-no-3.sh
+./script-no-4.sh
+```
+Majapahit (DNS Slave)
+```
+echo -e "nameserver 192.168.122.1\nnameserver 192.240.3.2" > /etc/resolv.conf
+apt-get update
+apt-get install bind9 -y
+
 ```
 
 Client
@@ -147,7 +160,7 @@ Install bind9
 ```
 apt-get install bind9 -y
 ```
-script.sh
+script-no-2.sh
 ```
 echo 'zone "sudarsana.it14.com" {
     type master;
@@ -178,13 +191,13 @@ $TTL    604800
 service bind9 restart
 ```
 3. Para pasukan juga perlu mengetahui mana titik yang akan diserang, sehingga dibutuhkan domain lain yaitu pasopati.xxxx.com dengan alias www.pasopati.xxxx.com yang mengarah ke Kotalingga.
-
+script-no-3.sh
 ```
 echo 'zone "pasopati.it14.com" {
     type master;
     notify yes;
     file "/etc/bind/jarkom/pasopati.it14.com";
-};' > /etc/bind/named.conf.local
+};' >> /etc/bind/named.conf.local
 
 mkdir /etc/bind/jarkom
 
@@ -211,12 +224,13 @@ service bind9 restart
 
 4. Markas pusat meminta dibuatnya domain khusus untuk menaruh informasi persenjataan dan suplai yang tersebar. Informasi dan suplai meme terbaru tersebut mengarah ke Tanjungkulai dan domain yang ingin digunakan adalah rujapala.xxxx.com dengan alias www.rujapala.xxxx.com.
 
+script-no-4.sh
 ```
 echo 'zone "rujapala.it14.com" {
     type master;
     notify yes;
     file "/etc/bind/jarkom/rujapala.it14.com";
-};' > /etc/bind/named.conf.local
+};' >> /etc/bind/named.conf.local
 
 mkdir /etc/bind/jarkom
 
