@@ -276,6 +276,8 @@ AlbertEinstein <br />
 ![image](https://github.com/user-attachments/assets/f001861a-79fe-4a42-a091-e1b4c1c3326e) <br/>
 ![image](https://github.com/user-attachments/assets/e836bb5a-fc9f-4e54-bccf-19dcc66e3152) <br />
 
+6. Beberapa daerah memiliki keterbatasan yang menyebabkan hanya dapat mengakses domain secara langsung melalui alamat IP domain tersebut. Karena daerah tersebut tidak diketahui secara spesifik, pastikan semua komputer (client) dapat mengakses domain pasopati.xxxx.com melalui alamat IP Kotalingga (Notes: menggunakan pointer record).
+
 
 
 
