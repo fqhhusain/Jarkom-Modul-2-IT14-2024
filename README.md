@@ -172,7 +172,67 @@ $TTL    604800
 service bind9 restart
 ```
 3. Para pasukan juga perlu mengetahui mana titik yang akan diserang, sehingga dibutuhkan domain lain yaitu pasopati.xxxx.com dengan alias www.pasopati.xxxx.com yang mengarah ke Kotalingga.
-4. Markas pusat meminta dibuatnya domain khusus untuk menaruh informasi persenjataan dan suplai yang tersebar. Informasi dan suplai meme terbaru tersebut mengarah ke Tanjungkulai dan domain yang ingin digunakan adalah rujapala.xxxx.com dengan alias www.rujapala.xxxx.com.
 
+```
+echo 'zone "pasopati.it14.com" {
+    type master;
+    notify yes;
+    file "/etc/bind/jarkom/pasopati.it14.com";
+};' > /etc/bind/named.conf.local
+
+mkdir /etc/bind/jarkom
+
+cp /etc/bind/db.local /etc/bind/jarkom/pasopati.it14.com
+
+echo '
+;
+; BIND data file for local loopback interface
+;
+$TTL    604800
+@       IN      SOA     pasopati.it14.com. root.pasopati.it14.com. (
+                        2024100101      ; Serial
+                        604800         ; Refresh
+                        86400         ; Retry
+                        2419200         ; Expire
+                        604800 )       ; Negative Cache TTL
+;
+@       IN      NS      pasopati.it14.com.
+@       IN      A       192.240.2.3    ;
+@       IN      AAAA    ::1' > /etc/bind/jarkom/pasopati.it14.com
+
+service bind9 restart
+```
+
+5. Markas pusat meminta dibuatnya domain khusus untuk menaruh informasi persenjataan dan suplai yang tersebar. Informasi dan suplai meme terbaru tersebut mengarah ke Tanjungkulai dan domain yang ingin digunakan adalah rujapala.xxxx.com dengan alias www.rujapala.xxxx.com.
+
+```
+echo 'zone "rujapala.it14.com" {
+    type master;
+    notify yes;
+    file "/etc/bind/jarkom/rujapala.it14.com";
+};' > /etc/bind/named.conf.local
+
+mkdir /etc/bind/jarkom
+
+cp /etc/bind/db.local /etc/bind/jarkom/rujapala.it14.com
+
+echo '
+;
+; BIND data file for local loopback interface
+;
+$TTL    604800
+@       IN      SOA     rujapala.it14.com. root.rujapala.it14.com. (
+                        2024100101      ; Serial
+                        604800         ; Refresh
+                        86400         ; Retry
+                        2419200         ; Expire
+                        604800 )       ; Negative Cache TTL
+;
+@       IN      NS      rujapala.it14.com.
+@       IN      A       192.240.2.4    ;
+@       IN      AAAA    ::1' > /etc/bind/jarkom/rujapala.it14.com
+
+service bind9 restart
+```
 
 
