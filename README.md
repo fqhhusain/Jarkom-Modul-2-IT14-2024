@@ -366,7 +366,7 @@ zone "rujapala.it14.com" {
     type slave;
     masters { 192.240.3.2; };
     file "/var/lib/bind/rujapala.it14.com";
-};' >> /etc/bind/named.conf.local
+};' > /etc/bind/named.conf.local
 
 service bind9 restart
 ```
@@ -415,6 +415,7 @@ ping cakra.sudarsana.it14.com
 DNS Master
 
 ```
+
 echo '
 ;
 ; BIND data file for local loopback interface
@@ -493,7 +494,7 @@ $TTL    604800
 @       IN      AAAA    ::1
 www     IN      CNAME   panah.pasopati.it14.com.
 ' > /etc/bind/panah/panah.pasopati.it14.com
-
+service bind9 restart
 ```
 ![image](https://github.com/user-attachments/assets/9c4df210-5a99-46bb-93b1-973035aaa693) <br />
 ![image](https://github.com/user-attachments/assets/f76a63fa-de09-4616-8c64-27c41546edea) <br />
@@ -502,6 +503,34 @@ www     IN      CNAME   panah.pasopati.it14.com.
 
 
 10. Markas juga meminta catatan kapan saja meme brain rot akan dijatuhkan, maka buatlah subdomain baru di subdomain panah yaitu log.panah.pasopati.xxxx.com serta aliasnya www.log.panah.pasopati.xxxx.com yang juga mengarah ke Kotalingga.
+Pada DNS Slave
+```
+echo '
+;
+; BIND data file for local loopback interface
+;
+$TTL    604800
+@       IN      SOA     panah.pasopati.it14.com. root.panah.pasopati.it14.com. (
+                              2         ; Serial
+                         604800         ; Refresh
+                          86400         ; Retry
+                        2419200         ; Expire
+                         604800 )       ; Negative Cache TTL
+;
+@       IN      NS      panah.pasopati.it14.com.
+@       IN      A       192.240.2.3     ; IP Kotalinga
+@       IN      AAAA    ::1
+www     IN      CNAME   panah.pasopati.it14.com.
+log     IN      A       192.240.2.3
+www.log IN      CNAME   panah.pasopati.it14.com.
+' > /etc/bind/panah/panah.pasopati.it14.com
+service bind9 restart
+```
+
+```
+ping log.panah.pasopati.it14.com
+```
+![image](https://github.com/user-attachments/assets/30e8ec00-1cb3-490c-a873-0fc233c7e598)
 
 
 
