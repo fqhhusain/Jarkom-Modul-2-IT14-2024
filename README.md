@@ -375,7 +375,7 @@ pada sriwijaya
 ```
 service bind9 stop
 ```
-![image](https://github.com/user-attachments/assets/a5631122-a682-4643-a603-c5caac2deea0)
+![image](https://github.com/user-attachments/assets/a5631122-a682-4643-a603-c5caac2deea0) <br />
 lalu ping <br />
 ![image](https://github.com/user-attachments/assets/ec3563f3-74fb-4dfb-bd53-cf811ec64c7a)
 
