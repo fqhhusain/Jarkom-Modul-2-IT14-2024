@@ -412,6 +412,81 @@ ping cakra.sudarsana.it14.com
 
 9. Karena terjadi serangan DDOS oleh shikanoko nokonoko koshitantan (NUN), sehingga sistem komunikasinya terhalang. Untuk melindungi warga, kita diperlukan untuk membuat sistem peringatan dari siren man oleh Frekuensi Freak dan memasukkannya ke subdomain panah.pasopati.xxxx.com dalam folder panah dan pastikan dapat diakses secara mudah dengan menambahkan alias www.panah.pasopati.xxxx.com dan mendelegasikan subdomain tersebut ke Majapahit dengan alamat IP menuju radar di Kotalingga.
 
+DNS Master
+
+```
+echo '
+;
+; BIND data file for local loopback interface
+;
+$TTL    604800
+@       IN      SOA     pasopati.it14.com. root.pasopati.it14.com. (
+                        2024100101      ; Serial
+                        604800         ; Refresh
+                        86400         ; Retry
+                        2419200         ; Expire
+                        604800 )       ; Negative Cache TTL
+;
+@       IN      NS      pasopati.it14.com.
+@       IN      A       192.240.2.3    ;
+www     IN      CNAME   pasopati.it14.com.
+ns1     IN      A       192.240.1.2
+panah   IN      NS      ns1
+@       IN      AAAA    ::1' > /etc/bind/jarkom/pasopati.it14.com
+
+echo '
+options {
+        directory "/var/cache/bind";
+
+        allow-query{any;};
+
+        auth-nxdomain no;    # conform to RFC1035
+        listen-on-v6 { any; };
+}; ' > /etc/bind/named.conf.options
+service bind9 restart
+```
+
+DNS Slave
+```
+echo '
+options {
+        directory "/var/cache/bind";
+
+        allow-query{any;};
+
+        auth-nxdomain no;    # conform to RFC1035
+        listen-on-v6 { any; };
+}; ' > /etc/bind/named.conf.options
+service bind9 restart
+echo `
+zone "panah.pasopati.it14.com" {
+	type master;
+	file "/etc/bind/jarkom/panah.pasopati.it14.com";
+};
+`>> /etc/bind/named.conf.local
+
+mkdir /etc/bind/panah
+cp /etc/bind/db.local /etc/bind/panah/panah.pasopati.it14.com
+
+echo '
+;
+; BIND data file for local loopback interface
+;
+$TTL    604800
+@       IN      SOA     panah.pasopati.it14.com. root.panah.pasopati.it14.com. (
+                              2         ; Serial
+                         604800         ; Refresh
+                          86400         ; Retry
+                        2419200         ; Expire
+                         604800 )       ; Negative Cache TTL
+;
+@       IN      NS      panah.pasopati.it14.com.
+@       IN      A       192.240.2.3     ; IP Kotalinga
+@       IN      AAAA    ::1
+www     IN      CNAME   panah.pasopati.it14.com.
+' > /etc/bind/panah/panah.pasopati.it14.com
+```
+
 10. Markas juga meminta catatan kapan saja meme brain rot akan dijatuhkan, maka buatlah subdomain baru di subdomain panah yaitu log.panah.pasopati.xxxx.com serta aliasnya www.log.panah.pasopati.xxxx.com yang juga mengarah ke Kotalingga.
 
 
