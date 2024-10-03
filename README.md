@@ -46,6 +46,14 @@ apt-get install bind9 -y
 Client
 ```
 echo -e "nameserver 192.168.122.1\nnameserver 192.240.3.2\nnameserver 192.240.1.2" > /etc/resolv.conf
+apt-get update
+apt install lynx
+```
+Web Server
+```
+echo nameserver 192.240.3.2 > /etc/resolv.conf
+apt-get update
+apt-get install apache2 libapache2-mod-php7.0 php wget unzip -y
 ```
 
 Other
@@ -142,7 +150,7 @@ iface eth0 inet static
 	netmask 255.255.255.0
 	gateway 192.240.2.1
 ```
-- Kotalingga
+- Kotalingga(web server)
 ```
 auto eth0
 iface eth0 inet static
@@ -532,6 +540,75 @@ ping log.panah.pasopati.it14.com
 ```
 ![image](https://github.com/user-attachments/assets/30e8ec00-1cb3-490c-a873-0fc233c7e598)
 
+11. Setelah pertempuran mereda, warga IT dapat kembali mengakses jaringan luar dan menikmati meme brainrot terbaru, tetapi hanya warga Majapahit saja yang dapat mengakses jaringan luar secara langsung. Buatlah konfigurasi agar warga IT yang berada diluar Majapahit dapat mengakses jaringan luar melalui DNS Server Majapahit.
+
+DNS Slave <br />
+```
+echo ' options {
+        directory "/var/cache/bind";
+
+        forwarders {
+                192.168.122.1;
+        };
+
+        allow-query{any;};
+
+        auth-nxdomain no;    # conform to RFC1035
+        listen-on-v6 { any; };
+}; ' > /etc/bind/named.conf.options
+
+service bind9 restart
+```
+Hapus ip 92.168.122.1 pada nameserver client <br />
+![image](https://github.com/user-attachments/assets/ba0c2fa9-099f-4755-8a35-5425e419b279)
+
+
+12. Karena pusat ingin sebuah laman web yang ingin digunakan untuk memantau kondisi kota lainnya maka deploy laman web ini (cek resource yg lb) pada Kotalingga menggunakan apache.
+
+Kotalingga <br />
+```
+cp /etc/apache2/sites-available/000-default.conf /etc/apache2/sites-available/pasopati.it14.com.conf
+echo '
+<VirtualHost *:80>
+    ServerAdmin webmaster@localhost
+    DocumentRoot /var/www/pasopati.it14.com
+    ServerName pasopati.it14.com
+    ServerAlias www.pasopati.it14.com
+</VirtualHost> ' > /etc/apache2/sites-available/pasopati.it14.com.conf
+
+mkdir /var/www/pasopati.it14.com
+
+a2ensite pasopati.it14.com.conf
+
+wget --no-check-certificate 'https://docs.google.com/uc?export=download&id=1Sqf0TIiybYyUp5nyab4twy9svkgq8bi7' -O lb.zip
+
+unzip lb.zip  -d  lb
+
+mv lb/* /var/www/pasopati.it14.com
+
+cp /var/www/pasopati.it14.com/worker/index.php /var/www/pasopati.it14.com/index.php
+
+cp /var/www/pasopati.it14.com/index.php /var/www/html/index.php
+rm /var/www/html/index.html
+
+service apache2 restart
+```
+
+```
+lynx http://www.pasopati.it14.com
+```
+![image](https://github.com/user-attachments/assets/88797414-eaf6-4412-8d18-50d253ce5409)
+
+
+13. Karena Sriwijaya dan Majapahit memenangkan pertempuran ini dan memiliki banyak uang dari hasil penjarahan (sebanyak 35 juta, belum dipotong pajak) maka pusat meminta kita memasang load balancer untuk membagikan uangnya pada web nya, dengan Kotalingga, Bedahulu, Tanjungkulai sebagai worker dan Solok sebagai Load Balancer menggunakan apache sebagai web server nya dan load balancer nya.
+
+```
+```
+
+14. Selama melakukan penjarahan mereka melihat bagaimana web server luar negeri, hal ini membuat mereka iri, dengki, sirik dan ingin flexing sehingga meminta agar web server dan load balancer nya diubah menjadi nginx.
+
+```
+```
 
 
 
