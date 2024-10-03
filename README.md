@@ -448,26 +448,34 @@ service bind9 restart
 
 DNS Slave
 ```
+# Update named.conf.options
 echo '
 options {
         directory "/var/cache/bind";
 
-        allow-query{any;};
+        allow-query { any; };
 
         auth-nxdomain no;    # conform to RFC1035
         listen-on-v6 { any; };
-}; ' > /etc/bind/named.conf.options
-service bind9 restart
-echo `
-zone "panah.pasopati.it14.com" {
-	type master;
-	file "/etc/bind/jarkom/panah.pasopati.it14.com";
-};
-`>> /etc/bind/named.conf.local
+};' > /etc/bind/named.conf.options
 
-mkdir /etc/bind/panah
+# Restart BIND9 service to apply the options
+service bind9 restart
+
+# Add a new zone configuration to named.conf.local
+echo '
+zone "panah.pasopati.it14.com" {
+    type master;
+    file "/etc/bind/panah/panah.pasopati.it14.com";
+};' >> /etc/bind/named.conf.local
+
+# Create directory for the zone files
+mkdir -p /etc/bind/panah
+
+# Copy the template file to create a new zone file
 cp /etc/bind/db.local /etc/bind/panah/panah.pasopati.it14.com
 
+# Create the zone file for the domain
 echo '
 ;
 ; BIND data file for local loopback interface
@@ -485,7 +493,13 @@ $TTL    604800
 @       IN      AAAA    ::1
 www     IN      CNAME   panah.pasopati.it14.com.
 ' > /etc/bind/panah/panah.pasopati.it14.com
+
 ```
+![image](https://github.com/user-attachments/assets/9c4df210-5a99-46bb-93b1-973035aaa693) <br />
+![image](https://github.com/user-attachments/assets/f76a63fa-de09-4616-8c64-27c41546edea) <br />
+
+
+
 
 10. Markas juga meminta catatan kapan saja meme brain rot akan dijatuhkan, maka buatlah subdomain baru di subdomain panah yaitu log.panah.pasopati.xxxx.com serta aliasnya www.log.panah.pasopati.xxxx.com yang juga mengarah ke Kotalingga.
 
