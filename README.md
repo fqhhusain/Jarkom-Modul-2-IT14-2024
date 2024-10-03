@@ -381,6 +381,35 @@ lalu ping <br />
 
 8. Kamu juga diperintahkan untuk membuat subdomain khusus melacak kekuatan tersembunyi di Ohio dengan subdomain cakra.sudarsana.xxxx.com yang mengarah ke Bedahulu.
 
+DNS Master (Sriwijaya) <br/>
+
+```
+echo '
+;
+; BIND data file for local loopback interface
+;
+$TTL    604800
+@       IN      SOA     sudarsana.it14.com. root.sudarsana.it14.com. (
+                        2024100101      ; Serial
+                        604800         ; Refresh
+                        86400         ; Retry
+                        2419200         ; Expire
+                        604800 )       ; Negative Cache TTL
+;
+@       IN      NS      sudarsana.it14.com.
+@       IN      A       192.240.1.4    ;
+www     IN      CNAME   sudarsana.it14.com.
+cakra   IN      A       192.240.2.2
+@       IN      AAAA    ::1' > /etc/bind/jarkom/sudarsana.it14.com
+
+service bind9 restart
+```
+
+```
+ping cakra.sudarsana.it14.com
+```
+![image](https://github.com/user-attachments/assets/34431684-4cfd-44c7-a956-ab8f1e853734)
+
 9. Karena terjadi serangan DDOS oleh shikanoko nokonoko koshitantan (NUN), sehingga sistem komunikasinya terhalang. Untuk melindungi warga, kita diperlukan untuk membuat sistem peringatan dari siren man oleh Frekuensi Freak dan memasukkannya ke subdomain panah.pasopati.xxxx.com dalam folder panah dan pastikan dapat diakses secara mudah dengan menambahkan alias www.panah.pasopati.xxxx.com dan mendelegasikan subdomain tersebut ke Majapahit dengan alamat IP menuju radar di Kotalingga.
 
 10. Markas juga meminta catatan kapan saja meme brain rot akan dijatuhkan, maka buatlah subdomain baru di subdomain panah yaitu log.panah.pasopati.xxxx.com serta aliasnya www.log.panah.pasopati.xxxx.com yang juga mengarah ke Kotalingga.
