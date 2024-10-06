@@ -597,7 +597,7 @@ lynx http://www.pasopati.it14.com
 ```
 ![image](https://github.com/user-attachments/assets/88797414-eaf6-4412-8d18-50d253ce5409)
 
-
+(Revisi)
 #### 13. Karena Sriwijaya dan Majapahit memenangkan pertempuran ini dan memiliki banyak uang dari hasil penjarahan (sebanyak 35 juta, belum dipotong pajak) maka pusat meminta kita memasang load balancer untuk membagikan uangnya pada web nya, dengan Kotalingga, Bedahulu, Tanjungkulai sebagai worker dan Solok sebagai Load Balancer menggunakan apache sebagai web server nya dan load balancer nya.
 
 Solok(Load Balancer)
