@@ -628,6 +628,15 @@ service apache2 restart
 web server di atur seperti no 12
 Tanjungkulai, Bedahulu, Kotalingga
 
+Testing
+```
+lynx 192.240.1.4
+```
+![Screenshot 2024-10-06 231344](https://github.com/user-attachments/assets/e0061a4c-cc32-468c-8395-7cae747c5a69) <br />
+![Screenshot 2024-10-06 231419](https://github.com/user-attachments/assets/be1a397e-06f7-4975-a600-8054b3837a1e)
+
+
+
 #### 14. Selama melakukan penjarahan mereka melihat bagaimana web server luar negeri, hal ini membuat mereka iri, dengki, sirik dan ingin flexing sehingga meminta agar web server dan load balancer nya diubah menjadi nginx.
 
 web server
