@@ -630,8 +630,63 @@ Tanjungkulai, Bedahulu, Kotalingga
 
 #### 14. Selama melakukan penjarahan mereka melihat bagaimana web server luar negeri, hal ini membuat mereka iri, dengki, sirik dan ingin flexing sehingga meminta agar web server dan load balancer nya diubah menjadi nginx.
 
+web server
 ```
+apt-get install nginx php-fpm -y
+
+echo '
+server {
+    listen 80;
+
+    root /var/www/pasopati.it14.com;
+
+    index index.php index.html index.htm;
+    server_name _ pasopati.it14.com www.pasopati.it14.com;
+
+    location / {
+        try_files $uri $uri/ /index.php?$query_string;
+    }
+
+    # pass PHP scripts to FastCGI server
+    location ~ \.php$ {
+        include snippets/fastcgi-php.conf;
+        fastcgi_pass unix:/var/run/php/php7.0-fpm.sock;
+    }
+
+    location ~ /\.ht {
+        deny all;
+    }
+}
+' > /etc/nginx/sites-available/pasopati.it14.com
+ln -s /etc/nginx/sites-available/pasopati.it07.com /etc/nginx/sites-enabled/pasopati.it07.com
+rm /etc/nginx/sites-enabled/default
+service nginx restart
+service php7.0-fpm start
 ```
+Load balancer
+```
+apt-get install nginx -y
+echo '
+upstream webserver  {
+    server 192.240.2.2;
+    server 192.240.2.3;
+    server 192.240.2.4;
+}
+
+server {
+    listen 80;
+    server_name _;
+
+    location / {
+        proxy_pass http://webserver;
+    }
+}
+' > /etc/nginx/sites-available/solok
+ln -s /etc/nginx/sites-available/solok /etc/nginx/sites-enabled/solok
+rm /etc/nginx/sites-enabled/default
+service nginx restart
+```
+![image](https://github.com/user-attachments/assets/807607a9-4b4a-4fac-8b77-5984cf8674f1)
 
 
 
