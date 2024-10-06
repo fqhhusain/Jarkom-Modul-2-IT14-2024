@@ -102,7 +102,7 @@ iface eth0 inet static
 	netmask 255.255.255.0
 	gateway 192.240.1.1
 ```
-- Solok
+- Solok (Load Balancer)
 ```
 auto eth0
 iface eth0 inet static
@@ -592,6 +592,7 @@ service apache2 restart
 ```
 
 ```
+sudo apt install lynx
 lynx http://www.pasopati.it14.com
 ```
 ![image](https://github.com/user-attachments/assets/88797414-eaf6-4412-8d18-50d253ce5409)
@@ -599,8 +600,33 @@ lynx http://www.pasopati.it14.com
 
 #### 13. Karena Sriwijaya dan Majapahit memenangkan pertempuran ini dan memiliki banyak uang dari hasil penjarahan (sebanyak 35 juta, belum dipotong pajak) maka pusat meminta kita memasang load balancer untuk membagikan uangnya pada web nya, dengan Kotalingga, Bedahulu, Tanjungkulai sebagai worker dan Solok sebagai Load Balancer menggunakan apache sebagai web server nya dan load balancer nya.
 
+Solok(Load Balancer)
 ```
+apt-get update && apt-get install apache2 -y
+
+a2enmod proxy
+a2enmod proxy_balancer
+a2enmod proxy_http
+a2enmod lbmethod_byrequests
+
+echo '
+<VirtualHost *:80>
+    <Proxy balancer://mycluster>
+        BalancerMember http://192.240.2.2
+        BalancerMember http://192.240.2.3
+        BalancerMember http://192.240.2.4
+        ProxySet lbmethod=byrequests
+    </Proxy>
+
+    ProxyPass / balancer://mycluster/
+    ProxyPassReverse / balancer://mycluster/
+
+</VirtualHost>
+' > /etc/apache2/sites-available/000-default.conf
+service apache2 restart
 ```
+web server di atur seperti no 12
+Tanjungkulai, Bedahulu, Kotalingga
 
 #### 14. Selama melakukan penjarahan mereka melihat bagaimana web server luar negeri, hal ini membuat mereka iri, dengki, sirik dan ingin flexing sehingga meminta agar web server dan load balancer nya diubah menjadi nginx.
 
